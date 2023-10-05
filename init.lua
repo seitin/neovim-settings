@@ -28,7 +28,8 @@ require("lazy").setup({
   { "vim-airline/vim-airline" },
   { "catppuccin/nvim" },
   { "nvim-lua/plenary.nvim" },
-  { "nvim-telescope/telescope.nvim" },
+  { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+  -- { "nvim-telescope/telescope.nvim" },
   { "scrooloose/nerdtree" },
   { "kien/ctrlp.vim" },
   { "jremmen/vim-ripgrep" },
@@ -41,8 +42,9 @@ vim.api.nvim_set_keymap("", "<C-n>", ":Neotree toggle<CR>", {noremap = true})
 
 require("coc-settings")
 require("ctrlp-settings")
-require("telescope-settings")
+-- require("telescope-settings")
 require("default-settings")
+require("bufferline-settings")
 
 -- let &t_ut=''
 
