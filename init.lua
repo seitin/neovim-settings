@@ -29,11 +29,12 @@ require("lazy").setup({
   { "catppuccin/nvim" },
   { "nvim-lua/plenary.nvim" },
   { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-  -- { "nvim-telescope/telescope.nvim" },
-  { "scrooloose/nerdtree" },
-  { "kien/ctrlp.vim" },
+  { 'mfussenegger/nvim-lint' },
+  { "nvim-telescope/telescope.nvim" },
+  -- { "junegunn/fzf.vim" },
+  -- { "kien/ctrlp.vim" },
   { "jremmen/vim-ripgrep" },
-  { "nvim-treesitter/nvim-treesitter" },
+  -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" }
 })
 
@@ -41,10 +42,12 @@ require("lazy").setup({
 vim.api.nvim_set_keymap("", "<C-n>", ":Neotree toggle<CR>", {noremap = true})
 
 require("coc-settings")
-require("ctrlp-settings")
--- require("telescope-settings")
+-- require("ctrlp-settings")
+require("telescope-settings")
 require("default-settings")
 require("bufferline-settings")
+require("neotree-settings")
+-- require("fzf-settings")
 
 -- let &t_ut=''
 

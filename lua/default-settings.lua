@@ -37,3 +37,17 @@ vim.cmd([[ let g:airline#extensions#tabline#left_alt_sep = '|' ]])
 vim.cmd([[ let g:airline#extensions#tabline#buffer_nr_show = 1 ]])
 vim.cmd([[ let g:airline#extensions#tabline#ignore_bufadd_pat = 1 ]])
 
+
+require('lint').linters_by_ft = {
+  lua = {'luacheck',},
+  golang = { 'golangcilint', },
+  python = { 'pylint', },
+  javascript = { 'jshint', },
+}
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+  callback = function()
+    require("lint").try_lint()
+  end,
+})
+
+

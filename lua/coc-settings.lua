@@ -131,7 +131,7 @@ keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 
 -- Remap <C-f> and <C-b> to scroll float windows/popups
 ---@diagnostic disable-next-line: redefined-local
-local opts = {silent = true, nowait = true, expr = true}
+opts = {silent = true, nowait = true, expr = true}
 keyset("n", "<C-f>", 'coc#float#has_scroll() ? coc#float#scroll(1) : "<C-f>"', opts)
 keyset("n", "<C-b>", 'coc#float#has_scroll() ? coc#float#scroll(0) : "<C-b>"', opts)
 keyset("i", "<C-f>",
@@ -165,7 +165,7 @@ vim.api.nvim_create_user_command("OR", "call CocActionAsync('runCommand', 'edito
 -- Mappings for CoCList
 -- code actions and coc stuff
 ---@diagnostic disable-next-line: redefined-local
-local opts = {silent = true, nowait = true}
+opts = {silent = true, nowait = true}
 -- Show all diagnostics
 keyset("n", "<space>a", ":<C-u>CocList diagnostics<cr>", opts)
 -- Manage extensions
