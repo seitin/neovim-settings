@@ -35,7 +35,19 @@ require("lazy").setup({
   -- { "kien/ctrlp.vim" },
   { "jremmen/vim-ripgrep" },
   -- { "nvim-treesitter/nvim-treesitter" },
-  { "tpope/vim-commentary" }
+  { "tpope/vim-commentary" },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  },
+  { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
+  { 'rmagatti/goto-preview'},
+  { 'github/copilot.vim' },
 })
 
 -- NeoTree
@@ -48,7 +60,5 @@ require("default-settings")
 require("bufferline-settings")
 require("neotree-settings")
 -- require("fzf-settings")
-
+vim.keymap.set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
 -- let &t_ut=''
-
-

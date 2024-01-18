@@ -183,5 +183,3 @@ keyset("n", "<space>k", ":<C-u>CocPrev<cr>", opts)
 -- Resume latest coc list
 keyset("n", "<space>p", ":<C-u>CocListResume<cr>", opts)
 
-vim.cmd([[ let g:coc_user_config = {} ]])
-vim.cmd([[ let g:coc_user_config['coc.preferences.jumpCommand'] = 'tabe' ]])
