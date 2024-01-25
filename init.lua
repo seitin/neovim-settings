@@ -12,15 +12,15 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  },
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   branch = "v3.x",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+  --     "MunifTanjim/nui.nvim",
+  --   }
+  -- },
   {
     "neoclide/coc.nvim",
     branch = "release"
@@ -31,6 +31,8 @@ require("lazy").setup({
   { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
   { "nvim-telescope/telescope.nvim" },
+  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-tree/nvim-web-devicons" },
   -- { "junegunn/fzf.vim" },
   -- { "kien/ctrlp.vim" },
   { "jremmen/vim-ripgrep" },
@@ -46,7 +48,8 @@ require("coc-settings")
 require("telescope-settings")
 require("default-settings")
 require("bufferline-settings")
-require("neotree-settings")
+-- require("neotree-settings")
+require("nvimtree-settings")
 -- require("fzf-settings")
 
 -- let &t_ut=''
