@@ -50,4 +50,5 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
   end,
 })
 
-
+vim.cmd([[ set foldmethod=syntax ]])
+vim.cmd([[ setlocal foldlevel=99 ]])
