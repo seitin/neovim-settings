@@ -12,15 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- {
-  --   "nvim-neo-tree/neo-tree.nvim",
-  --   branch = "v3.x",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-  --     "MunifTanjim/nui.nvim",
-  --   }
-  -- },
   {
     "neoclide/coc.nvim",
     branch = "release"
@@ -33,24 +24,15 @@ require("lazy").setup({
   { "nvim-telescope/telescope.nvim" },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
-  -- { "junegunn/fzf.vim" },
-  -- { "kien/ctrlp.vim" },
   { "jremmen/vim-ripgrep" },
-  -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" }
 })
 
--- NeoTree
-vim.api.nvim_set_keymap("", "<C-n>", ":Neotree toggle<CR>", {noremap = true})
-
 require("coc-settings")
--- require("ctrlp-settings")
 require("telescope-settings")
 require("default-settings")
 require("bufferline-settings")
--- require("neotree-settings")
 require("nvimtree-settings")
--- require("fzf-settings")
 
 -- let &t_ut=''
 
