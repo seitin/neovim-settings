@@ -13,15 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v3.x",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  },
-  {
     "neoclide/coc.nvim",
     branch = "release"
   },
@@ -31,8 +22,8 @@ require("lazy").setup({
   { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
   { "nvim-telescope/telescope.nvim" },
-  -- { "junegunn/fzf.vim" },
-  -- { "kien/ctrlp.vim" },
+  { "nvim-tree/nvim-tree.lua" },
+  { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
   -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
@@ -50,15 +41,10 @@ require("lazy").setup({
   { 'github/copilot.vim' },
 })
 
--- NeoTree
-vim.api.nvim_set_keymap("", "<C-n>", ":Neotree toggle<CR>", {noremap = true})
-
 require("coc-settings")
--- require("ctrlp-settings")
 require("telescope-settings")
 require("default-settings")
 require("bufferline-settings")
-require("neotree-settings")
--- require("fzf-settings")
-vim.keymap.set("n", "gp", "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", {noremap=true})
+require("nvimtree-settings")
+
 -- let &t_ut=''
