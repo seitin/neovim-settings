@@ -13,38 +13,41 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "xiyaowong/coc-sumneko-lua",
+  },
+  {
     "neoclide/coc.nvim",
     branch = "release"
   },
   { "vim-airline/vim-airline" },
   { "catppuccin/nvim" },
   { "nvim-lua/plenary.nvim" },
-  { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+  -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
   { "nvim-telescope/telescope.nvim" },
-  { "nvim-tree/nvim-tree.lua" },
+  -- { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
   -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
-  {
-    "iamcco/markdown-preview.nvim",
-    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-    build = "cd app && npm install",
-    init = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-    end,
-    ft = { "markdown" },
-  },
-  { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
-  { 'rmagatti/goto-preview'},
+  -- {
+  --   "iamcco/markdown-preview.nvim",
+  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+  --   build = "cd app && npm install",
+  --   init = function()
+  --     vim.g.mkdp_filetypes = { "markdown" }
+  --   end,
+  --   ft = { "markdown" },
+  -- },
+  -- { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
+  -- { 'rmagatti/goto-preview'},
   { 'github/copilot.vim' },
 })
 
 require("coc-settings")
 require("telescope-settings")
 require("default-settings")
-require("bufferline-settings")
-require("nvimtree-settings")
+-- require("bufferline-settings")
+-- require("nvimtree-settings")
 
 -- let &t_ut=''

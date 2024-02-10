@@ -1,8 +1,13 @@
 {
+  "sumneko-lua.enableNvimLuaDev": true,
   "languageserver": {
-    "lua": {
-      "command": "lua-lsp",
-      "filetypes": ["lua"]
+    "ccls": {
+      "command": "ccls",
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "cacheDirectory": "/tmp/ccls"
+      }
     },
     "golang": {
       "command": "gopls",
