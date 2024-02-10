@@ -24,6 +24,7 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
+  { 'stevearc/conform.nvim' },
   { "nvim-telescope/telescope.nvim" },
   -- { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -47,6 +48,7 @@ require("lazy").setup({
 require("coc-settings")
 require("telescope-settings")
 require("default-settings")
+require("linting")
 -- require("bufferline-settings")
 -- require("nvimtree-settings")
 
