@@ -7,13 +7,13 @@ vim.cmd([[ set ignorecase ]])
 vim.cmd([[ set smartcase ]])
 vim.cmd([[ set clipboard=unnamed ]])
 
-vim.keymap.set("n", "<space>bn", ":BufferLineCycleNext<cr>", { noremap = true })
-vim.keymap.set("n", "<space>bb", ":BufferLineCyclePrev<cr>", { noremap = true })
+-- vim.keymap.set("n", "<space>bn", ":BufferLineCycleNext<cr>", { noremap = true })
+-- vim.keymap.set("n", "<space>bb", ":BufferLineCyclePrev<cr>", { noremap = true })
 vim.keymap.set("n", "<space>q", ":bd<CR>", { noremap = true })
 
-for i = 1, 9 do
-  vim.keymap.set("n", "<space>b" .. i, ":BufferLineGoToBuffer " .. i .. "<cr>", { noremap = true })
-end
+-- for i = 1, 9 do
+--   vim.keymap.set("n", "<space>b" .. i, ":BufferLineGoToBuffer " .. i .. "<cr>", { noremap = true })
+-- end
 
 
 vim.keymap.set("n", "<C-h>", "<C-w>h", { noremap = true })
