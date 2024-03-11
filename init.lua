@@ -26,10 +26,10 @@ require("lazy").setup({
   { 'mfussenegger/nvim-lint' },
   { 'stevearc/conform.nvim' },
   { "nvim-telescope/telescope.nvim" },
-  -- { "nvim-tree/nvim-tree.lua" },
+  { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
-  -- { "nvim-treesitter/nvim-treesitter" },
+  { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
   -- {
   --   "iamcco/markdown-preview.nvim",
@@ -43,6 +43,13 @@ require("lazy").setup({
   -- { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
   -- { 'rmagatti/goto-preview'},
   { 'github/copilot.vim' },
+  { "derektata/lorem.nvim" },
+  { 'f-person/git-blame.nvim' }
+})
+
+require('lorem').setup({
+  sentenceLength = "mixedShort",
+  comma = 0.1
 })
 
 require("coc-settings")
@@ -50,6 +57,7 @@ require("telescope-settings")
 require("default-settings")
 require("linting")
 -- require("bufferline-settings")
--- require("nvimtree-settings")
+require("nvimtree-settings")
+require("git-settings")
 
 -- let &t_ut=''
