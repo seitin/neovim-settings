@@ -9,6 +9,9 @@ vim.lsp.start({
     {'vscode-json-language-server'},
     {'vscode-eslint-language-server'},
     {'bash-language-server'},
+    {'vim-language-server'},
+    {'sql-language-server'},
+    {'docker-langserver'},
   }
 })
 

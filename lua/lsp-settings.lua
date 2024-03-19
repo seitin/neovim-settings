@@ -1,5 +1,8 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+lspconfig.vimls.setup{}
+lspconfig.sqlls.setup{}
+lspconfig.dockerls.setup{}
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
 lspconfig.rust_analyzer.setup {
@@ -8,6 +11,7 @@ lspconfig.rust_analyzer.setup {
     ['rust-analyzer'] = {},
   },
 }
+
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
