@@ -12,13 +12,13 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  {
-    "xiyaowong/coc-sumneko-lua",
-  },
-  {
-    "neoclide/coc.nvim",
-    branch = "release"
-  },
+  -- {
+  --   "xiyaowong/coc-sumneko-lua",
+  -- },
+  -- {
+  --   "neoclide/coc.nvim",
+  --   branch = "release"
+  -- },
   { "vim-airline/vim-airline" },
   { "catppuccin/nvim" },
   { "nvim-lua/plenary.nvim" },
@@ -42,9 +42,16 @@ require("lazy").setup({
   -- },
   -- { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
   -- { 'rmagatti/goto-preview'},
-  { 'github/copilot.vim' },
+  -- { 'github/copilot.vim' },
   { "derektata/lorem.nvim" },
-  { 'f-person/git-blame.nvim' }
+  { 'f-person/git-blame.nvim' },
+  { "neovim/nvim-lspconfig" },
+  { 'hrsh7th/cmp-nvim-lsp' },
+  { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-path' },
+  { 'hrsh7th/cmp-cmdline' },
+  { 'hrsh7th/nvim-cmp' },
+  { "lukas-reineke/lsp-format.nvim" },
 })
 
 require('lorem').setup({
@@ -52,7 +59,7 @@ require('lorem').setup({
   comma = 0.1
 })
 
-require("coc-settings")
+-- require("coc-settings")
 require("telescope-settings")
 require("default-settings")
 require("linting")
@@ -61,3 +68,8 @@ require("nvimtree-settings")
 require("git-settings")
 
 -- let &t_ut=''
+--
+
+require("lsp-settings")
+require("nvim-cmp")
+
