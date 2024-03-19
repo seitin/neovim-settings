@@ -19,8 +19,20 @@ require("lazy").setup({
   --   "neoclide/coc.nvim",
   --   branch = "release"
   -- },
-  { "vim-airline/vim-airline" },
+  -- { "vim-airline/vim-airline" },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
   { "catppuccin/nvim" },
+  { 'Mofiqul/dracula.nvim'},
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   { "nvim-lua/plenary.nvim" },
   -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
@@ -29,7 +41,7 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
-  { "nvim-treesitter/nvim-treesitter" },
+  -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
   -- {
   --   "iamcco/markdown-preview.nvim",
