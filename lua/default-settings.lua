@@ -23,7 +23,7 @@ vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/ven
 
 vim.keymap.set("n", "<C-b>", "<cmd>set norelativenumber<cr>", {noremap = true})
 require('lint').linters_by_ft = {
-  lua = {'luacheck',},
+  -- lua = {'luacheck',},
   golang = { 'golangcilint', },
   python = { 'pylint', },
   javascript = { 'jshint', },
