@@ -19,8 +19,20 @@ require("lazy").setup({
   --   "neoclide/coc.nvim",
   --   branch = "release"
   -- },
-  { "vim-airline/vim-airline" },
+  -- { "vim-airline/vim-airline" },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
   { "catppuccin/nvim" },
+  { 'Mofiqul/dracula.nvim'},
+  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
   { "nvim-lua/plenary.nvim" },
   -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { 'mfussenegger/nvim-lint' },
@@ -29,7 +41,7 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
-  { "nvim-treesitter/nvim-treesitter" },
+  -- { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
   -- {
   --   "iamcco/markdown-preview.nvim",
@@ -42,7 +54,20 @@ require("lazy").setup({
   -- },
   -- { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
   -- { 'rmagatti/goto-preview'},
-  -- { 'github/copilot.vim' },
+  { 'github/copilot.vim' },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+    },
+    opts = {
+      debug = true, -- Enable debugging
+      -- See Configuration section for rest
+    },
+    -- See Commands section for default commands if you want to lazy load on them
+  },
   { "derektata/lorem.nvim" },
   { 'f-person/git-blame.nvim' },
   { "neovim/nvim-lspconfig" },
@@ -72,4 +97,3 @@ require("git-settings")
 
 require("lsp-settings")
 require("nvim-cmp")
-

@@ -1,5 +1,13 @@
-vim.cmd([[ :colorscheme catppuccin-frappe ]])
-vim.cmd([[ let g:airline_theme = 'catppuccin' ]])
+-- vim.cmd([[ :colorscheme catppuccin-frappe ]])
+-- vim.cmd([[ :colorscheme tokyonight-moon ]])
+vim.cmd([[ :colorscheme dracula ]])
+-- Lua
+require('lualine').setup {
+  options = {
+    theme = 'dracula'
+  }
+}
+
 vim.cmd([[ set nocompatible              " be iMproved, required ]])
 vim.cmd([[ filetype off                  " required ]])
 vim.cmd([[ filetype plugin indent on    " required ]])
@@ -18,12 +26,11 @@ vim.cmd([[ :set softtabstop=2 ]])
 vim.cmd([[ :set shiftwidth=2 ]])
 vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
-vim.cmd([[ :set number ]])
 vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
 
 vim.keymap.set("n", "<C-b>", "<cmd>set norelativenumber<cr>", {noremap = true})
 require('lint').linters_by_ft = {
-  -- lua = {'luacheck',},
+  lua = {'luacheck',},
   golang = { 'golangcilint', },
   python = { 'pylint', },
   javascript = { 'jshint', },
