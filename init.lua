@@ -37,11 +37,11 @@ require("lazy").setup({
   --   }
   -- },
   {
-    'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" }
   },
   { "catppuccin/nvim" },
-  { 'Mofiqul/dracula.nvim' },
+  { "Mofiqul/dracula.nvim" },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
   {
     "folke/tokyonight.nvim",
@@ -51,8 +51,8 @@ require("lazy").setup({
   },
   { "nvim-lua/plenary.nvim" },
   -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-  { 'mfussenegger/nvim-lint' },
-  { 'stevearc/conform.nvim' },
+  { "mfussenegger/nvim-lint" },
+  { "stevearc/conform.nvim" },
   { "nvim-telescope/telescope.nvim" },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -68,9 +68,9 @@ require("lazy").setup({
   --   end,
   --   ft = { "markdown" },
   -- },
-  -- { 'glepnir/nerdicons.nvim', cmd = 'NerdIcons', config = function() require('nerdicons').setup({}) end},
-  -- { 'rmagatti/goto-preview'},
-  { 'github/copilot.vim' },
+  -- { "glepnir/nerdicons.nvim", cmd = "NerdIcons", config = function() require("nerdicons").setup({}) end},
+  -- { "rmagatti/goto-preview"},
+  { "github/copilot.vim" },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
     branch = "canary",
@@ -85,17 +85,17 @@ require("lazy").setup({
     -- See Commands section for default commands if you want to lazy load on them
   },
   { "derektata/lorem.nvim" },
-  { 'f-person/git-blame.nvim' },
+  { "f-person/git-blame.nvim" },
   { "neovim/nvim-lspconfig" },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-cmdline' },
-  { 'hrsh7th/nvim-cmp' },
+  { "hrsh7th/cmp-nvim-lsp" },
+  { "hrsh7th/cmp-buffer" },
+  { "hrsh7th/cmp-path" },
+  { "hrsh7th/cmp-cmdline" },
+  { "hrsh7th/nvim-cmp" },
   { "lukas-reineke/lsp-format.nvim" },
 })
 
-require('lorem').setup({
+require("lorem").setup({
   sentenceLength = "mixedShort",
   comma = 0.1
 })
@@ -108,7 +108,7 @@ require("linting")
 require("nvimtree-settings")
 require("git-settings")
 
--- let &t_ut=''
+-- let &t_ut=""
 --
 
 require("lsp-settings")
