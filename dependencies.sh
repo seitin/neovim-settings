@@ -11,3 +11,5 @@ npm i -g bash-language-server
 npm i -g sql-language-server
 
 npm i -g dockerfile-language-server-nodejs
+
+npm i -g diagnostic-languageserver
