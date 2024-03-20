@@ -1,3 +1,4 @@
+--
 -- Setup language servers.
 local lspconfig = require('lspconfig')
 lspconfig.vimls.setup {}
@@ -44,6 +45,7 @@ lspconfig.lua_ls.setup {
     Lua = {}
   }
 }
+
 require 'lspconfig'.jsonls.setup {}
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -54,6 +56,52 @@ require 'lspconfig'.jsonls.setup {
 }
 
 require 'lspconfig'.bashls.setup {}
+
+
+
+local diagnosticls = require("diagnosticls")
+
+lspconfig.diagnosticls.setup({
+  filetypes = {
+    "haskell",
+    unpack(diagnosticls.filetypes),
+  },
+  init_options = {
+    linters = vim.tbl_deep_extend("force", diagnosticls.linters, {
+      hlint = {
+        command = "hlint",
+        -- ...
+      },
+    }),
+    formatters = diagnosticls.formatters,
+    filetypes = {
+      haskell = "hlint",
+      javascript = "jshint",
+      javascriptreact = "jshint",
+      typescript = "jshint",
+      typescriptreact = "jshint",
+      lua = { "luacheck", "selene" },
+      markdown = { "markdownlint" },
+      python = { "flake8", "mypy" },
+      scss = "stylelint",
+      sh = "shellcheck",
+      vim = "vint",
+      yaml = "yamllint",
+    },
+    formatFiletypes = {
+      fish = "fish_indent",
+      javascript = "prettier",
+      javascriptreact = "prettier",
+      json = "prettier",
+      lua = { "lua-format", "stylua" },
+      python = { "isort", "black", "autoflake" },
+      sh = "shfmt",
+      sql = "pg_format",
+      typescript = "prettier",
+      typescriptreact = "prettier",
+    },
+  },
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions

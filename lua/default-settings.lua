@@ -28,18 +28,19 @@ vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
 vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
 
-vim.keymap.set("n", "<C-b>", "<cmd>set norelativenumber<cr>", {noremap = true})
-require('lint').linters_by_ft = {
-  lua = {'luacheck',},
-  golang = { 'golangcilint', },
-  python = { 'pylint', },
-  javascript = { 'jshint', },
-}
-vim.api.nvim_create_autocmd({ "TextChanged" }, {
-  callback = function()
-    require("lint").try_lint()
-  end,
-})
 
 vim.cmd([[ set foldmethod=syntax ]])
 vim.cmd([[ set foldlevel=99 ]])
+
+-- require('lint').linters_by_ft = {
+--   lua = {'luacheck',},
+--   golang = { 'golangcilint', },
+--   python = { 'pylint', },
+--   javascript = { 'jshint', },
+-- }
+-- vim.api.nvim_create_autocmd({ "TextChanged" }, {
+--   callback = function()
+--     require("lint").try_lint()
+--   end,
+-- })
+
