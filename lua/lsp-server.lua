@@ -12,6 +12,7 @@ vim.lsp.start({
     {'vim-language-server'},
     {'sql-language-server'},
     {'docker-langserver'},
+    {'gopls'},
   }
 })
 

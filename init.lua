@@ -20,12 +20,28 @@ require("lazy").setup({
   --   branch = "release"
   -- },
   -- { "vim-airline/vim-airline" },
+
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      -- "rcarriga/nvim-notify",
+    }
+  },
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
   { "catppuccin/nvim" },
-  { 'Mofiqul/dracula.nvim'},
+  { 'Mofiqul/dracula.nvim' },
   { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
   {
     "folke/tokyonight.nvim",
@@ -97,3 +113,4 @@ require("git-settings")
 
 require("lsp-settings")
 require("nvim-cmp")
+require("noice-settings")

@@ -1,10 +1,11 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-lspconfig.vimls.setup{}
-lspconfig.sqlls.setup{}
-lspconfig.dockerls.setup{}
+lspconfig.vimls.setup {}
+lspconfig.sqlls.setup {}
+lspconfig.dockerls.setup {}
 lspconfig.pyright.setup {}
 lspconfig.tsserver.setup {}
+lspconfig.gopls.setup {}
 lspconfig.rust_analyzer.setup {
   -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
@@ -15,7 +16,7 @@ lspconfig.rust_analyzer.setup {
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
-    if vim.loop.fs_stat(path..'/.luarc.json') or vim.loop.fs_stat(path..'/.luarc.jsonc') then
+    if vim.loop.fs_stat(path .. '/.luarc.json') or vim.loop.fs_stat(path .. '/.luarc.jsonc') then
       return
     end
 
@@ -43,16 +44,16 @@ lspconfig.lua_ls.setup {
     Lua = {}
   }
 }
-require'lspconfig'.jsonls.setup{}
+require 'lspconfig'.jsonls.setup {}
 --Enable (broadcasting) snippet capability for completion
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.jsonls.setup {
+require 'lspconfig'.jsonls.setup {
   capabilities = capabilities,
 }
 
-require'lspconfig'.bashls.setup{}
+require 'lspconfig'.bashls.setup {}
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -66,7 +67,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('UserLspConfig', {}),
   callback = function(ev)
-        -- Enable completion triggered by <c-x><c-o>
+    -- Enable completion triggered by <c-x><c-o>
     vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
     -- Buffer local mappings.
