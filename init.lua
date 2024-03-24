@@ -94,6 +94,14 @@ require("lazy").setup({
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/nvim-cmp" },
   { "lukas-reineke/lsp-format.nvim" },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+    },
+  },
 })
 
 require("lorem").setup({
@@ -114,4 +122,5 @@ require("git-settings")
 
 require("lsp-settings")
 require("nvim-cmp")
+require("trouble-settings")
 -- require("noice-settings")
