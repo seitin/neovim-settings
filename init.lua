@@ -57,8 +57,9 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
-  -- { "nvim-treesitter/nvim-treesitter" },
+  { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
+  { "yamatsum/nvim-cursorline" },
   -- {
   --   "iamcco/markdown-preview.nvim",
   --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -94,6 +95,7 @@ require("lazy").setup({
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/nvim-cmp" },
   { "lukas-reineke/lsp-format.nvim" },
+  { "edluffy/hologram.nvim" },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -102,6 +104,7 @@ require("lazy").setup({
       -- or leave it empty to use the default settings
     },
   },
+  { "klen/nvim-test" },
 })
 
 require("lorem").setup({
@@ -123,4 +126,6 @@ require("git-settings")
 require("lsp-settings")
 require("nvim-cmp")
 require("trouble-settings")
--- require("noice-settings")
+require("cursorline-settings")
+require("treesiter-settings")
+require("nvim-test-settings")
