@@ -1,19 +1,24 @@
---
 -- Setup language servers.
 local lspconfig = require('lspconfig')
+-- vimls
 lspconfig.vimls.setup {}
+-- sqlls
 lspconfig.sqlls.setup {}
+-- dockerls
 lspconfig.dockerls.setup {}
+-- pyright
 lspconfig.pyright.setup {}
+-- typescript / javascript ls
 lspconfig.tsserver.setup {}
+-- golps
 lspconfig.gopls.setup {}
+-- rustls
 lspconfig.rust_analyzer.setup {
-  -- Server-specific settings. See `:help lspconfig-setup`
   settings = {
     ['rust-analyzer'] = {},
   },
 }
-
+-- luals
 lspconfig.lua_ls.setup {
   on_init = function(client)
     local path = client.workspace_folders[1].name
@@ -45,22 +50,18 @@ lspconfig.lua_ls.setup {
     Lua = {}
   }
 }
-
-require 'lspconfig'.jsonls.setup {}
---Enable (broadcasting) snippet capability for completion
+-- jsonls
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-require 'lspconfig'.jsonls.setup {
+lspconfig.jsonls.setup {
   capabilities = capabilities,
 }
 
-require 'lspconfig'.bashls.setup {}
+-- bashls
+lspconfig.bashls.setup {}
 
-
-
+-- diagnosticls
 local diagnosticls = require("diagnosticls")
-
 lspconfig.diagnosticls.setup({
   filetypes = {
     "haskell",
@@ -125,7 +126,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
+    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, opts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, opts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, opts)
     vim.keymap.set('n', '<space>wl', function()
@@ -140,3 +141,4 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
