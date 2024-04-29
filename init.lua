@@ -53,7 +53,7 @@ require("lazy").setup({
   -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { "mfussenegger/nvim-lint" },
   -- { "stevearc/conform.nvim" },
-  { "nvim-telescope/telescope.nvim" },
+  -- { "nvim-telescope/telescope.nvim" },
   { "ibhagwan/fzf-lua", build = "./install --bin"},
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -116,7 +116,7 @@ require("lorem").setup({
 })
 
 -- require("coc-settings")
-require("telescope-settings")
+-- require("telescope-settings")
 require("default-settings")
 -- require("linting")
 -- require("bufferline-settings")
