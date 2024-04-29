@@ -1,14 +1,11 @@
+require "fzf-lua".setup { defaults = { git_icons = false } }
 
+vim.api.nvim_set_keymap("n", "<C-\\>", [[<Cmd>lua require"fzf-lua".buffers()<CR>]], {})
+vim.api.nvim_set_keymap("n", "<C-i>", [[<Cmd>lua require"fzf-lua".builtin()<CR>]], {})
+vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua require"fzf-lua".files()<CR>]], {})
+vim.api.nvim_set_keymap("n", "<C-l>", [[<Cmd>lua require"fzf-lua".live_grep_glob()<CR>]], {})
+vim.api.nvim_set_keymap("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
+vim.api.nvim_set_keymap("n", "<F1>", [[<Cmd>lua require"fzf-lua".help_tags()<CR>]], {})
 
-vim.cmd([[ let g:fzf_vim = {} ]])
-vim.cmd([[ let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/'] ]])
-
-vim.cmd([[ let g:fzf_vim.preview_window = ['hidden,right,50%,<70(up,40%)', 'ctrl-/'] ]])
-
-vim.cmd([[ let g:fzf_vim.preview_window = [] ]])
-
-vim.keymap.set("n", "<C-p>", ":Files<cr>", { noremap = true })
-
---   let g:fzf_vim = {}
---   let g:fzf_vim.preview_bash = 'C:\Git\bin\bash.exe'
---   
+require("fzf-lua").utils.info(
+  "|<C-\\> buffers|<C-p> files|<C-g> grep|<C-l> live grep|<C-k> builtin|<F1> help|")

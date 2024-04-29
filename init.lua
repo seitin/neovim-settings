@@ -54,6 +54,7 @@ require("lazy").setup({
   { "mfussenegger/nvim-lint" },
   -- { "stevearc/conform.nvim" },
   { "nvim-telescope/telescope.nvim" },
+  { "ibhagwan/fzf-lua", build = "./install --bin"},
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
@@ -106,6 +107,8 @@ require("lazy").setup({
   },
   { "klen/nvim-test" },
 })
+
+require("fzf-settings")
 
 require("lorem").setup({
   sentenceLength = "mixedShort",
