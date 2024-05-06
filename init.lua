@@ -54,7 +54,7 @@ require("lazy").setup({
   { "mfussenegger/nvim-lint" },
   -- { "stevearc/conform.nvim" },
   -- { "nvim-telescope/telescope.nvim" },
-  { "ibhagwan/fzf-lua", build = "./install --bin"},
+  { "ibhagwan/fzf-lua",               build = "./install --bin" },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
@@ -106,6 +106,18 @@ require("lazy").setup({
     },
   },
   { "klen/nvim-test" },
+  {
+    "NeogitOrg/neogit",
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      -- "nvim-telescope/telescope.nvim", -- optional
+      "ibhagwan/fzf-lua", -- optional
+    },
+    config = true
+  }
 })
 
 require("fzf-settings")
