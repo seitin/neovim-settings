@@ -117,7 +117,8 @@ require("lazy").setup({
       "ibhagwan/fzf-lua", -- optional
     },
     config = true
-  }
+  },
+  { 'RaafatTurki/corn.nvim' }
 })
 
 require("fzf-settings")
@@ -144,3 +145,6 @@ require("trouble-settings")
 require("cursorline-settings")
 require("treesiter-settings")
 require("nvim-test-settings")
+
+require('corn').setup()
+
