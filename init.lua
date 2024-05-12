@@ -12,30 +12,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  -- {
-  --   "xiyaowong/coc-sumneko-lua",
-  -- },
-  -- {
-  --   "neoclide/coc.nvim",
-  --   branch = "release"
-  -- },
-  -- { "vim-airline/vim-airline" },
-
-  -- {
-  --   "folke/noice.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     -- add any options here
-  --   },
-  --   dependencies = {
-  --     -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-  --     "MunifTanjim/nui.nvim",
-  --     -- OPTIONAL:
-  --     --   `nvim-notify` is only needed, if you want to use the notification view.
-  --     --   If not available, we use `mini` as the fallback
-  --     -- "rcarriga/nvim-notify",
-  --   }
-  -- },
   {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }
@@ -50,10 +26,7 @@ require("lazy").setup({
     opts = {},
   },
   { "nvim-lua/plenary.nvim" },
-  -- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
   { "mfussenegger/nvim-lint" },
-  -- { "stevearc/conform.nvim" },
-  -- { "nvim-telescope/telescope.nvim" },
   { "ibhagwan/fzf-lua",               build = "./install --bin" },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -61,17 +34,6 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
   { "yamatsum/nvim-cursorline" },
-  -- {
-  --   "iamcco/markdown-preview.nvim",
-  --   cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-  --   build = "cd app && npm install",
-  --   init = function()
-  --     vim.g.mkdp_filetypes = { "markdown" }
-  --   end,
-  --   ft = { "markdown" },
-  -- },
-  -- { "glepnir/nerdicons.nvim", cmd = "NerdIcons", config = function() require("nerdicons").setup({}) end},
-  -- { "rmagatti/goto-preview"},
   { "lithammer/nvim-diagnosticls" },
   { "github/copilot.vim" },
   {
@@ -145,17 +107,9 @@ require("lorem").setup({
   comma = 0.1
 })
 
--- require("coc-settings")
--- require("telescope-settings")
 require("default-settings")
--- require("linting")
--- require("bufferline-settings")
 require("nvimtree-settings")
 require("git-settings")
-
--- let &t_ut=""
---
-
 require("lsp-settings")
 require("nvim-cmp")
 require("trouble-settings")
@@ -163,4 +117,6 @@ require("cursorline-settings")
 require("treesiter-settings")
 require("nvim-test-settings")
 
-require('corn').setup()
+require("corn").setup()
+require("cursorline-settings")
+require("lualine-settings")
