@@ -118,7 +118,24 @@ require("lazy").setup({
     },
     config = true
   },
-  { 'RaafatTurki/corn.nvim' }
+  { 'RaafatTurki/corn.nvim' },
+  {
+    "piersolenski/wtf.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {},
+    keys = {
+      {
+        mode = { "n" },
+        "gw",
+        function()
+          require("wtf").search()
+        end,
+        desc = "Search diagnostic with Google",
+      },
+    },
+  },
 })
 
 require("fzf-settings")
@@ -147,4 +164,3 @@ require("treesiter-settings")
 require("nvim-test-settings")
 
 require('corn').setup()
-
