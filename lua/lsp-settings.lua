@@ -10,6 +10,7 @@ lspconfig.dockerls.setup {}
 lspconfig.pyright.setup {}
 -- typescript / javascript ls
 lspconfig.tsserver.setup {}
+lspconfig.svelte.setup{}
 -- golps
 lspconfig.gopls.setup {}
 -- rustls
