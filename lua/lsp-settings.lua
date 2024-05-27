@@ -13,6 +13,10 @@ lspconfig.tsserver.setup {}
 lspconfig.svelte.setup{}
 -- golps
 lspconfig.gopls.setup {}
+-- svelt
+lspconfig.svelte.setup {}
+-- html
+lspconfig.html.setup {}
 -- rustls
 lspconfig.rust_analyzer.setup {
   settings = {
