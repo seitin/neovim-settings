@@ -30,6 +30,10 @@ vim.cmd([[ :set relativenumber ]])
 vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
 
 
+vim.opt.scrolloff = 10
+vim.opt.inccommand = "split"
+vim.opt.cursorline = true
+vim.opt.cursorlineopt = "number"
 -- vim.cmd([[ set foldmethod=syntax ]])
 -- vim.cmd([[ set foldlevel=99 ]])
 
