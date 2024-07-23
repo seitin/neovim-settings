@@ -98,6 +98,7 @@ require("lazy").setup({
       },
     },
   },
+  { 'ggandor/leap.nvim' },
 })
 
 require("fzf-settings")
@@ -120,3 +121,4 @@ require("nvim-test-settings")
 require("corn").setup()
 require("cursorline-settings")
 require("lualine-settings")
+require("leap-settings")
