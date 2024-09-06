@@ -103,11 +103,6 @@ require("lazy").setup({
 
 require("fzf-settings")
 
-require("lorem").setup({
-  sentenceLength = "mixedShort",
-  comma = 0.1
-})
-
 require("default-settings")
 require("nvimtree-settings")
 require("git-settings")
