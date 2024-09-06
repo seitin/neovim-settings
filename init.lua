@@ -26,8 +26,11 @@ require("lazy").setup({
     opts = {},
   },
   { "nvim-lua/plenary.nvim" },
-  { "mfussenegger/nvim-lint" },
-  { "ibhagwan/fzf-lua",               build = "./install --bin" },
+  -- { "mfussenegger/nvim-lint" },
+  {
+    "ibhagwan/fzf-lua",
+    build = "./install --bin"
+  },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },

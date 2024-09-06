@@ -17,6 +17,16 @@ lspconfig.gopls.setup {}
 lspconfig.svelte.setup {}
 -- html
 lspconfig.html.setup {}
+-- eslint
+lspconfig.eslint.setup({
+  --- ...
+  on_attach = function(client, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
 -- rustls
 lspconfig.rust_analyzer.setup {
   settings = {
