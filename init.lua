@@ -18,7 +18,12 @@ require("lazy").setup({
   },
   { "catppuccin/nvim" },
   { "Mofiqul/dracula.nvim" },
-  { "bluz71/vim-nightfly-colors", name = "nightfly", lazy = false, priority = 1000 },
+  {
+    "bluz71/vim-nightfly-colors",
+    name = "nightfly",
+    lazy = false,
+    priority = 1000
+  },
   {
     "folke/tokyonight.nvim",
     lazy = false,
@@ -26,7 +31,6 @@ require("lazy").setup({
     opts = {},
   },
   { "nvim-lua/plenary.nvim" },
-  -- { "mfussenegger/nvim-lint" },
   {
     "ibhagwan/fzf-lua",
     build = "./install --bin"
@@ -52,7 +56,6 @@ require("lazy").setup({
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-  { "derektata/lorem.nvim" },
   { "f-person/git-blame.nvim" },
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/cmp-nvim-lsp" },
@@ -61,7 +64,6 @@ require("lazy").setup({
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/nvim-cmp" },
   { "lukas-reineke/lsp-format.nvim" },
-  { "edluffy/hologram.nvim" },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -83,7 +85,6 @@ require("lazy").setup({
     },
     config = true
   },
-  { 'RaafatTurki/corn.nvim' },
   {
     "piersolenski/wtf.nvim",
     dependencies = {
