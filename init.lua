@@ -117,5 +117,4 @@ require("cursorline-settings")
 require("treesiter-settings")
 require("nvim-test-settings")
 
-require("corn").setup()
 require("leap-settings")
