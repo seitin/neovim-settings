@@ -1,6 +1,6 @@
-vim.cmd([[ :colorscheme catppuccin-mocha ]])
+-- vim.cmd([[ :colorscheme catppuccin-mocha ]])
 -- vim.cmd([[ :colorscheme tokyonight-moon ]])
--- vim.cmd([[ :colorscheme dracula ]])
+vim.cmd([[ :colorscheme dracula ]])
 -- vim.cmd([[ :colorscheme nightfly ]])
 -- Lua
 require('lualine').setup {
