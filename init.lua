@@ -56,7 +56,7 @@ require("lazy").setup({
     },
     -- See Commands section for default commands if you want to lazy load on them
   },
-  { "f-person/git-blame.nvim" },
+  -- { "f-person/git-blame.nvim" },
   { "neovim/nvim-lspconfig" },
   { "hrsh7th/cmp-nvim-lsp" },
   { "hrsh7th/cmp-buffer" },
@@ -73,6 +73,7 @@ require("lazy").setup({
     },
   },
   { "klen/nvim-test" },
+  { "tpope/vim-fugitive" },
   {
     "NeogitOrg/neogit",
     dependencies = {
