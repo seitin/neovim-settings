@@ -45,13 +45,13 @@ require("lazy").setup({
   { "github/copilot.vim" },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencies = {
-      { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
+      { "github/copilot.vim" },                       -- or github/copilot.vim
+      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log wrapper
     },
+    build = "make tiktoken",                          -- Only on MacOS or Linux
     opts = {
-      debug = true, -- Enable debugging
+      debug = true,                                   -- Enable debugging
       -- See Configuration section for rest
     },
     -- See Commands section for default commands if you want to lazy load on them
@@ -63,6 +63,35 @@ require("lazy").setup({
   { "hrsh7th/cmp-path" },
   { "hrsh7th/cmp-cmdline" },
   { "hrsh7th/nvim-cmp" },
+  -- {
+  --   'saghen/blink.cmp',
+  --   lazy = false, -- lazy loading handled internally
+  --   -- optional: provides snippets for the snippet source
+  --   dependencies = 'rafamadriz/friendly-snippets',
+
+  --   -- use a release tag to download pre-built binaries
+  --   version = 'v0.*',
+  --   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
+  --   -- build = 'cargo build --release',
+
+  --   opts = {
+  --     highlight = {
+  --       -- sets the fallback highlight groups to nvim-cmp's highlight groups
+  --       -- useful for when your theme doesn't support blink.cmp
+  --       -- will be removed in a future release, assuming themes add support
+  --       use_nvim_cmp_as_default = true,
+  --     },
+  --     -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+  --     -- adjusts spacing to ensure icons are aligned
+  --     nerd_font_variant = 'normal',
+
+  --     -- experimental auto-brackets support
+  --     accept = { auto_brackets = { enabled = true } },
+
+  --     -- experimental signature help support
+  --     trigger = { signature_help = { enabled = true } }
+  --   }
+  -- },
   { "lukas-reineke/lsp-format.nvim" },
   {
     "folke/trouble.nvim",
@@ -112,6 +141,7 @@ require("nvimtree-settings")
 require("git-settings")
 require("lsp-settings")
 require("nvim-cmp")
+-- require("blink-settings")
 require("trouble-settings")
 require("cursorline-settings")
 require("treesiter-settings")

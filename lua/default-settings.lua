@@ -28,7 +28,7 @@ vim.cmd([[ :set shiftwidth=2 ]])
 vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
 vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
-
+-- vim.cmd([[ :set loaded_perl_provider=0 ]])
 
 vim.opt.scrolloff = 10
 vim.opt.inccommand = "split"
