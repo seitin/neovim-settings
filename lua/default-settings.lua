@@ -1,7 +1,8 @@
+
 -- vim.cmd([[ :colorscheme catppuccin-mocha ]])
 -- vim.cmd([[ :colorscheme tokyonight-moon ]])
-vim.cmd([[ :colorscheme dracula ]])
--- vim.cmd([[ :colorscheme nightfly ]])
+-- vim.cmd([[ :colorscheme dracula ]])
+vim.cmd([[ :colorscheme nightfly ]])
 -- Lua
 require('lualine').setup {
   options = {
@@ -27,16 +28,28 @@ vim.cmd([[ :set softtabstop=2 ]])
 vim.cmd([[ :set shiftwidth=2 ]])
 vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
-vim.cmd([[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
+vim.cmd(
+[[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
 -- vim.cmd([[ :set loaded_perl_provider=0 ]])
 
 vim.opt.scrolloff = 10
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
--- vim.cmd([[ set foldmethod=syntax ]])
--- vim.cmd([[ set foldlevel=99 ]])
+-- For Lua configuration (init.lua)
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
+-- For Lua configuration (init.lua)
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "json",
+  callback = function()
+    vim.opt_local.foldmethod = "expr"
+    vim.opt_local.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+  end,
+})
+
+vim.keymap.set("n", "<leader>r", ":so ~/.config/nvim/lua/default-settings.lua<CR>", { noremap = true, silent = true })
 -- require('lint').linters_by_ft = {
 --   lua = {'luacheck',},
 --   golang = { 'golangcilint', },
@@ -49,3 +62,17 @@ vim.opt.cursorlineopt = "number"
 --   end,
 -- })
 
+require("fzf-settings")
+
+require("nvimtree-settings")
+require("git-settings")
+require("lsp-settings")
+require("nvim-cmp")
+-- require("blink-settings")
+require("trouble-settings")
+require("cursorline-settings")
+require("treesiter-settings")
+require("nvim-test-settings")
+
+-- require("leap-settings")
+require("copilot")
