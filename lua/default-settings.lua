@@ -62,6 +62,20 @@ vim.keymap.set("n", "<leader>r", ":so ~/.config/nvim/lua/default-settings.lua<CR
 --   end,
 -- })
 
+require("rest-nvim").setup({
+  result_split_horizontal = false,
+  result_split_in_place = false,
+  skip_ssl_verification = false,
+  encode_url = true,
+  highlight = {
+    enabled = true,
+    timeout = 150,
+  },
+  env_file = '.env'
+})
+
+vim.keymap.set("n", "<space>r", ":Rest run<CR>", {noremap = true, silent = true})
+
 require("fzf-settings")
 
 require("nvimtree-settings")
