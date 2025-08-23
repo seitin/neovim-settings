@@ -1,4 +1,5 @@
-require "fzf-lua".setup { defaults = { git_icons = false } }
+local settings = require "fzf-lua"
+settings.setup { defaults = { git_icons = false } }
 
 vim.api.nvim_set_keymap("n", "<C-\\>", [[<Cmd>lua require"fzf-lua".buffers()<CR>]], {})
 vim.api.nvim_set_keymap("n", "<C-i>", [[<Cmd>lua require"fzf-lua".builtin()<CR>]], {})

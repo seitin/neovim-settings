@@ -13,6 +13,16 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
   {
+    "aserowy/tmux.nvim",
+    config = function()
+      return require("tmux").setup({
+        copy_sync = {
+          enable = true
+        },
+      })
+    end
+  },
+  {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" }
   },
@@ -33,7 +43,6 @@ require("lazy").setup({
   { "nvim-lua/plenary.nvim" },
   {
     "ibhagwan/fzf-lua",
-    build = "./install --bin"
   },
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
@@ -163,7 +172,7 @@ require("lazy").setup({
         opts.ensure_installed = opts.ensure_installed or {}
         table.insert(opts.ensure_installed, "http")
       end,
-    }
+    },
   },
   {
     "mistweaverco/kulala.nvim",
@@ -172,13 +181,15 @@ require("lazy").setup({
       { "<leader>Ra", desc = "Send all requests" },
       { "<leader>Rb", desc = "Open scratchpad" },
     },
-    ft = {"http", "rest"},
+    ft = { "http", "rest" },
     opts = {
       global_keymaps = true,
       global_keymaps_prefix = "<leader>R",
       kulala_keymaps_prefix = "",
     },
   },
+  { "hrsh7th/vim-vsnip" },
+  { "hrsh7th/vim-vsnip-integ" },
 })
 
 require("default-settings")

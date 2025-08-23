@@ -18,3 +18,4 @@ npm i -g diagnostic-languageserver
 
 npm i -g svelte-language-server
 
+npm i -g neovim

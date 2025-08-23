@@ -36,7 +36,7 @@ lspconfig.rust_analyzer.setup {
   },
 }
 -- luals
--- lspconfig.lua_ls.setup {}
+lspconfig.lua_ls.setup {}
 -- jsonls
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
