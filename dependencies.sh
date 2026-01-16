@@ -19,3 +19,7 @@ npm i -g diagnostic-languageserver
 npm i -g svelte-language-server
 
 npm i -g neovim
+
+npm i -g tailwindcss-language-server
+
+npm i -g astro-language-server

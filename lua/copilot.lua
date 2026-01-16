@@ -1,6 +1,6 @@
 require("CopilotChat").setup {
   -- See Configuration section for options
-  model = "claude-sonnet-4",
+  model = "claude-sonnet-4.5",
   highlight_headers = false,
   separator = '---',
   error_header = '> [!ERROR] Error',

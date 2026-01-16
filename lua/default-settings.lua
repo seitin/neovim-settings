@@ -90,3 +90,4 @@ require("nvim-test-settings")
 
 -- require("leap-settings")
 require("copilot")
+require("mason.settings")

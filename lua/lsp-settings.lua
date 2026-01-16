@@ -1,94 +1,143 @@
--- Setup language servers.
-local lspconfig = require('lspconfig')
--- vimls
-lspconfig.vimls.setup {}
--- sqlls
-lspconfig.sqlls.setup {}
--- dockerls
-lspconfig.dockerls.setup {}
--- pyright
-lspconfig.pyright.setup {}
--- typescript / javascript ls
-lspconfig.ts_ls.setup {}
-lspconfig.svelte.setup {}
--- golps
-lspconfig.gopls.setup {}
--- svelt
-lspconfig.svelte.setup {}
--- kulala
-lspconfig.kulala_ls.setup {}
--- html
-lspconfig.html.setup {}
--- eslint
-lspconfig.eslint.setup({
-  --- ...
-  on_attach = function(client, bufnr)
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      buffer = bufnr,
-      command = "EslintFixAll",
-    })
-  end,
+vim.lsp.enable({ 'lua_ls', 'vimls', 'sqlls', 'astro', 'dockerls', 'pyright', 'ts_ls', 'svelte', 'gopls', 'kulala_ls', 'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss' })
+
+vim.filetype.add({
+  extension = {
+    astro = "astro",
+    mdx = "mdx",
+  },
 })
--- rustls
-lspconfig.rust_analyzer.setup {
-  settings = {
-    ['rust-analyzer'] = {},
-  },
-}
--- luals
-lspconfig.lua_ls.setup {}
--- jsonls
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-lspconfig.jsonls.setup {
-  capabilities = capabilities,
-}
 
--- bashls
-lspconfig.bashls.setup {}
+-- Define LSP configurations
+vim.lsp.config('vimls', {
+  cmd = { 'vim-language-server', '--stdio' },
+  filetypes = { 'vim' },
+  root_dir = vim.fs.root(0, { '.git' }),
+})
 
--- diagnosticls
-local diagnosticls = require("diagnosticls")
-lspconfig.diagnosticls.setup({
-  filetypes = {
-    "haskell",
-    unpack(diagnosticls.filetypes),
-  },
+vim.lsp.config('sqlls', {
+  cmd = { 'sql-language-server', 'up', '--method', 'stdio' },
+  filetypes = { 'sql' },
+  root_dir = vim.fs.root(0, { '.git' }),
+})
+
+vim.lsp.config('astro', {
+  cmd = { 'astro-ls', '--stdio' },
+  filetypes = { 'astro' },
+  root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', 'astro.config.mjs', '.git' }),
+})
+
+vim.lsp.config('dockerls', {
+  cmd = { 'docker-langserver', '--stdio' },
+  filetypes = { 'dockerfile' },
+  root_dir = vim.fs.root(0, { '.git' }),
+})
+
+vim.lsp.config('pyright', {
+  cmd = { 'pyright-langserver', '--stdio' },
+  filetypes = { 'python' },
+  root_dir = vim.fs.root(0, { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' }),
+})
+
+vim.lsp.config('ts_ls', {
+  cmd = { 'typescript-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_dir = vim.fs.root(0, { 'package.json', 'tsconfig.json', 'jsconfig.json', '.git' }),
+})
+
+vim.lsp.config('svelte', {
+  cmd = { 'svelteserver', '--stdio' },
+  filetypes = { 'svelte' },
+  root_dir = vim.fs.root(0, { 'package.json', 'svelte.config.js', '.git' }),
+})
+
+vim.lsp.config('gopls', {
+  cmd = { 'gopls' },
+  filetypes = { 'go', 'gomod' },
+  root_dir = vim.fs.root(0, { 'go.work', 'go.mod', '.git' }),
+})
+
+vim.lsp.config('kulala_ls', {
+  cmd = { 'kulala-ls', '--stdio' },
+  filetypes = { 'http' },
+  root_dir = vim.fs.root(0, { '.git' }),
+})
+
+vim.lsp.config('html', {
+  cmd = { 'vscode-html-language-server', '--stdio' },
+  filetypes = { 'html' },
+  root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+})
+
+vim.lsp.config('eslint', {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
+  root_dir = vim.fs.root(0, { '.eslintrc', '.eslintrc.js', '.eslintrc.json', 'package.json', '.git' }),
+})
+
+vim.lsp.config('rust_analyzer', {
+  cmd = { 'rust-analyzer' },
+  filetypes = { 'rust' },
+  root_dir = vim.fs.root(0, { 'Cargo.toml', 'rust-project.json', '.git' }),
+})
+
+vim.lsp.config('lua_ls', {
+  cmd = { 'lua-language-server' },
+  filetypes = { 'lua' },
+  root_dir = vim.fs.root(0, { '.luarc.json', '.luarc.jsonc', '.luacheckrc', '.stylua.toml', 'stylua.toml', 'selene.toml', 'selene.yml', '.git' }),
+})
+
+vim.lsp.config('jsonls', {
+  cmd = { 'vscode-json-language-server', '--stdio' },
+  filetypes = { 'json', 'jsonc' },
+  root_dir = vim.fs.root(0, { 'package.json', '.git' }),
+})
+
+vim.lsp.config('bashls', {
+  cmd = { 'bash-language-server', 'start' },
+  filetypes = { 'sh', 'bash' },
+  root_dir = vim.fs.root(0, { '.git' }),
+})
+
+vim.lsp.config('tailwindcss', {
+  cmd = { 'tailwindcss-language-server', '--stdio' },
+  filetypes = { 'astro', 'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'vue', 'svelte' },
+  root_dir = function(fname)
+    return vim.fs.root(fname, { 'tailwind.config.js', 'tailwind.config.cjs', 'tailwind.config.mjs', 'tailwind.config.ts', 'postcss.config.js', 'package.json' })
+  end,
   init_options = {
-    linters = vim.tbl_deep_extend("force", diagnosticls.linters, {
-      hlint = {
-        command = "hlint",
-        -- ...
-      },
-    }),
-    formatters = diagnosticls.formatters,
-    filetypes = {
-      haskell = "hlint",
-      javascript = "jshint",
-      javascriptreact = "jshint",
-      typescript = "jshint",
-      typescriptreact = "jshint",
-      lua = { "luacheck", "selene" },
-      markdown = { "markdownlint" },
-      python = { "flake8", "mypy" },
-      scss = "stylelint",
-      sh = "shellcheck",
-      vim = "vint",
-      yaml = "yamllint",
-    },
-    formatFiletypes = {
-      fish = "fish_indent",
-      javascript = "prettier",
-      javascriptreact = "prettier",
-      json = "prettier",
-      lua = { "lua-format", "stylua" },
-      python = { "isort", "black", "autoflake" },
-      sh = "shfmt",
-      sql = "pg_format",
-      typescript = "prettier",
-      typescriptreact = "prettier",
+    userLanguages = {
+      astro = "html",
     },
   },
+  settings = {
+    tailwindCSS = {
+      experimental = {
+        classRegex = {
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          -- Astro-specific patterns
+          { "class:list=\\{([^}]*)\\}", "[\"'`]([^\"'`]*).*?[\"'`]" },
+        },
+      },
+      validate = true,
+      classAttributes = { "class", "className", "classList", "ngClass", "class:list" },
+      lint = {
+        cssConflict = "warning",
+        invalidApply = "error",
+        invalidConfigPath = "error",
+        invalidScreen = "error",
+        invalidTailwindDirective = "error",
+        invalidVariant = "error",
+        recommendedVariantOrder = "warning",
+      },
+    },
+  },
+})
+
+vim.lsp.config('diagnosticls', {
+  cmd = { 'diagnostic-languageserver', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'markdown', 'python', 'scss', 'sh', 'vim', 'yaml', 'haskell' },
+  root_dir = vim.fs.root(0, { '.git' }),
 })
 
 -- Global mappings.

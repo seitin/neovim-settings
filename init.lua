@@ -60,7 +60,7 @@ require("lazy").setup({
     },
     build = "make tiktoken",                          -- Only on MacOS or Linux
     opts = {
-      debug = true,                                   -- Enable debugging
+      debug = false,                                  -- Enable debugging
       -- See Configuration section for rest
     },
     -- See Commands section for default commands if you want to lazy load on them
@@ -190,6 +190,25 @@ require("lazy").setup({
   },
   { "hrsh7th/vim-vsnip" },
   { "hrsh7th/vim-vsnip-integ" },
+  -- Mason core
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate",
+  },
+  
+  -- Mason LSP integration
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+  },
+  
+  -- Mason tool installer (for linters/formatters)
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+  },
+
 })
 
 require("default-settings")
+require("esp-idf-settings")
