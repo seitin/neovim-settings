@@ -1,3 +1,5 @@
 pack/
 lazy-lock.json
 .vim/
+
+node_modules/

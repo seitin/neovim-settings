@@ -50,7 +50,7 @@ require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter" },
   { "tpope/vim-commentary" },
   { "yamatsum/nvim-cursorline" },
-  { "lithammer/nvim-diagnosticls" },
+  -- { "lithammer/nvim-diagnosticls" },
   { "github/copilot.vim" },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
@@ -67,9 +67,9 @@ require("lazy").setup({
   },
   { "f-person/git-blame.nvim" },
   { "neovim/nvim-lspconfig" },
-  { "lukas-reineke/lsp-format.nvim" },
-  { "klen/nvim-test" },
-  { "tpope/vim-fugitive" },
+  -- { "lukas-reineke/lsp-format.nvim" },
+  -- { "klen/nvim-test" },
+  -- { "tpope/vim-fugitive" },
   {
     "NeogitOrg/neogit",
     dependencies = {
@@ -81,36 +81,36 @@ require("lazy").setup({
     },
     config = true
   },
-  {
-    "piersolenski/wtf.nvim",
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    },
-    opts = {},
-    keys = {
-      {
-        mode = { "n" },
-        "gw",
-        function()
-          require("wtf").search()
-        end,
-        desc = "Search diagnostic with Google",
-      },
-    },
-  },
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    opts = {},
-    -- stylua: ignore
-    keys = {
-      { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-      { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-      { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-      { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-    },
-  },
+  -- {
+  --   "piersolenski/wtf.nvim",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   opts = {},
+  --   keys = {
+  --     {
+  --       mode = { "n" },
+  --       "gw",
+  --       function()
+  --         require("wtf").search()
+  --       end,
+  --       desc = "Search diagnostic with Google",
+  --     },
+  --   },
+  -- },
+  -- {
+  --   "folke/flash.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   -- stylua: ignore
+  --   keys = {
+  --     { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
+  --     { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
+  --     { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
+  --     { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+  --     { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
+  --   },
+  -- },
   {
     'MeanderingProgrammer/render-markdown.nvim',
     dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite

@@ -9,6 +9,10 @@ require('lualine').setup {
   }
 }
 
+vim.cmd([[ set wildmenu wildmode=longest:full ]])
+vim.cmd([[ syntax enable ]])
+vim.cmd([[ set conceallevel=2 ]])
+
 vim.cmd([[ set nocompatible              " be iMproved, required ]])
 vim.cmd([[ filetype off                  " required ]])
 vim.cmd([[ filetype plugin indent on    " required ]])
@@ -71,7 +75,6 @@ require("git-settings")
 require("lsp-settings")
 require("cursorline-settings")
 require("treesiter-settings")
-require("nvim-test-settings")
 
 require("copilot")
 require("mason.settings")

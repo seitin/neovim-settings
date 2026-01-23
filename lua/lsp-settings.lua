@@ -197,13 +197,38 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end
 
     if client.server_capabilities.completionProvider and client.name ~= 'minuet' then
-      vim.lsp.completion.enable(true, client_id, bufnr, { autotrigger = true })
+      vim.lsp.completion.enable(true, client_id, bufnr, { autotrigger = true, delay = 0 })
     end
 
 
-    -- Buffer local mappings.
-    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    -- buffer local mappings.
+    -- see `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
+
+    -- accept completion with tab
+    vim.keymap.set('i', '<tab>', function()
+      if vim.fn.pumvisible() == 1 then
+        return vim.lsp.completion.accept()
+      else
+        return '<tab>'
+      end
+    end, vim.tbl_extend('force', opts, { expr = true, desc = 'accept completion or insert tab' }))
+
+
+    -- navigate completion menu with ctrl-n and ctrl-p
+    vim.keymap.set('i', '<C-n>', function()
+      if vim.fn.pumvisible() == 1 then
+        return '<C-n>'
+      else
+        vim.lsp.completion.trigger()
+        return ''
+      end
+    end, vim.tbl_extend('force', opts, { expr = true, desc = 'Next completion or trigger' }))
+
+    vim.keymap.set('i', '<C-p>', '<C-p>', vim.tbl_extend('force', opts, { desc = 'Previous completion' }))
+
+    -- vim.keymap.set('i', '<C-Space>', vim.lsp.completion.trigger,
+    --   vim.tbl_extend('force', opts, { desc = 'Completion' }))
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition,
       vim.tbl_extend('force', opts, { desc = 'Go to definition' }))
     vim.keymap.set('n', 'K', vim.lsp.buf.hover,
@@ -229,3 +254,10 @@ vim.diagnostic.config({
   update_in_insert = false,
   severity_sort = true,
 })
+
+-- Better completion behavior
+vim.opt.completeopt = { 'menu', 'menuone', 'noselect' }
+vim.opt.pumheight = 10                     -- Limit completion menu height
+vim.opt.wildmenu = true                    -- Ativa menu de sugestões
+vim.opt.wildmode = 'longest:full,full'     -- Mostra sugestões enquanto digita
+vim.opt.wildignorecase = true              -- Ignora maiúsculas/minúsculas na busca
