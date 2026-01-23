@@ -205,16 +205,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- see `:help vim.lsp.*` for documentation on any of the below functions
     local opts = { buffer = ev.buf }
 
-    -- accept completion with tab
-    vim.keymap.set('i', '<tab>', function()
-      if vim.fn.pumvisible() == 1 then
-        return vim.lsp.completion.accept()
-      else
-        return '<tab>'
-      end
-    end, vim.tbl_extend('force', opts, { expr = true, desc = 'accept completion or insert tab' }))
-
-
     -- navigate completion menu with ctrl-n and ctrl-p
     vim.keymap.set('i', '<C-n>', function()
       if vim.fn.pumvisible() == 1 then
@@ -261,3 +251,26 @@ vim.opt.pumheight = 10                     -- Limit completion menu height
 vim.opt.wildmenu = true                    -- Ativa menu de sugestões
 vim.opt.wildmode = 'longest:full,full'     -- Mostra sugestões enquanto digita
 vim.opt.wildignorecase = true              -- Ignora maiúsculas/minúsculas na busca
+
+-- Smart Tab: Copilot first, then completion menu
+vim.keymap.set('i', '<Tab>', function()
+  local copilot_accept = vim.fn['copilot#Accept']('')
+  if copilot_accept ~= '' then
+    return copilot_accept
+  elseif vim.fn.pumvisible() == 1 then
+    return vim.api.nvim_replace_termcodes('<C-n>', true, true, true)
+  else
+    return vim.api.nvim_replace_termcodes('<Tab>', true, true, true)
+  end
+end, { expr = true, replace_keycodes = false, desc = 'Accept Copilot or navigate completion' })
+
+-- Accept completion with Enter
+vim.keymap.set('i', '<CR>', function()
+  if vim.fn.pumvisible() == 1 then
+    return vim.api.nvim_replace_termcodes('<C-y>', true, true, true)
+  else
+    return vim.api.nvim_replace_termcodes('<CR>', true, true, true)
+  end
+end, { expr = true, replace_keycodes = false, desc = 'Accept completion or new line' })
+
+
