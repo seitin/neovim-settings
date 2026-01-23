@@ -1,4 +1,3 @@
-
 -- vim.cmd([[ :colorscheme catppuccin-mocha ]])
 -- vim.cmd([[ :colorscheme tokyonight-moon ]])
 -- vim.cmd([[ :colorscheme dracula ]])
@@ -29,7 +28,7 @@ vim.cmd([[ :set shiftwidth=2 ]])
 vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
 vim.cmd(
-[[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
+  [[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
 -- vim.cmd([[ :set loaded_perl_provider=0 ]])
 
 vim.opt.scrolloff = 10
@@ -50,17 +49,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.keymap.set("n", "<leader>r", ":so ~/.config/nvim/lua/default-settings.lua<CR>", { noremap = true, silent = true })
--- require('lint').linters_by_ft = {
---   lua = {'luacheck',},
---   golang = { 'golangcilint', },
---   python = { 'pylint', },
---   javascript = { 'jshint', },
--- }
--- vim.api.nvim_create_autocmd({ "TextChanged" }, {
---   callback = function()
---     require("lint").try_lint()
---   end,
--- })
 
 require("rest-nvim").setup({
   result_split_horizontal = false,
@@ -74,20 +62,17 @@ require("rest-nvim").setup({
   env_file = '.env'
 })
 
-vim.keymap.set("n", "<space>r", ":Rest run<CR>", {noremap = true, silent = true})
+vim.keymap.set("n", "<space>r", ":Rest run<CR>", { noremap = true, silent = true })
 
 require("fzf-settings")
 
 require("nvimtree-settings")
 require("git-settings")
 require("lsp-settings")
-require("nvim-cmp")
--- require("blink-settings")
-require("trouble-settings")
 require("cursorline-settings")
 require("treesiter-settings")
 require("nvim-test-settings")
 
--- require("leap-settings")
 require("copilot")
 require("mason.settings")
+-- require("minuet-settings")

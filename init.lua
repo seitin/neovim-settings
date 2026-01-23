@@ -12,6 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+  { 'nvim-lua/plenary.nvim' },
   {
     "aserowy/tmux.nvim",
     config = function()
@@ -40,7 +41,6 @@ require("lazy").setup({
     priority = 1000,
     opts = {},
   },
-  { "nvim-lua/plenary.nvim" },
   {
     "ibhagwan/fzf-lua",
   },
@@ -54,68 +54,25 @@ require("lazy").setup({
   { "github/copilot.vim" },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" },                       -- or github/copilot.vim
-      { "nvim-lua/plenary.nvim", branch = "master" }, -- for curl, log wrapper
-    },
-    build = "make tiktoken",                          -- Only on MacOS or Linux
+    build = "make tiktoken", -- Only on MacOS or Linux
     opts = {
-      debug = false,                                  -- Enable debugging
-      -- See Configuration section for rest
+      debug = false,         -- Enable debugging
+      mappings = {
+        complete = {
+          detail = "Use @<Tab> or /<Tab> for options", -- Accept completion in normal mode
+          insert = "<Tab>", -- Accept completion in insert mode
+        },
+      }
     },
-    -- See Commands section for default commands if you want to lazy load on them
   },
   { "f-person/git-blame.nvim" },
   { "neovim/nvim-lspconfig" },
-  { "hrsh7th/cmp-nvim-lsp" },
-  { "hrsh7th/cmp-buffer" },
-  { "hrsh7th/cmp-path" },
-  { "hrsh7th/cmp-cmdline" },
-  { "hrsh7th/nvim-cmp" },
-  -- {
-  --   'saghen/blink.cmp',
-  --   lazy = false, -- lazy loading handled internally
-  --   -- optional: provides snippets for the snippet source
-  --   dependencies = 'rafamadriz/friendly-snippets',
-
-  --   -- use a release tag to download pre-built binaries
-  --   version = 'v0.*',
-  --   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  --   -- build = 'cargo build --release',
-
-  --   opts = {
-  --     highlight = {
-  --       -- sets the fallback highlight groups to nvim-cmp's highlight groups
-  --       -- useful for when your theme doesn't support blink.cmp
-  --       -- will be removed in a future release, assuming themes add support
-  --       use_nvim_cmp_as_default = true,
-  --     },
-  --     -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-  --     -- adjusts spacing to ensure icons are aligned
-  --     nerd_font_variant = 'normal',
-
-  --     -- experimental auto-brackets support
-  --     accept = { auto_brackets = { enabled = true } },
-
-  --     -- experimental signature help support
-  --     trigger = { signature_help = { enabled = true } }
-  --   }
-  -- },
   { "lukas-reineke/lsp-format.nvim" },
-  {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-    },
-  },
   { "klen/nvim-test" },
   { "tpope/vim-fugitive" },
   {
     "NeogitOrg/neogit",
     dependencies = {
-      "nvim-lua/plenary.nvim",  -- required
       "sindrets/diffview.nvim", -- optional - Diff integration
 
       -- Only one of these is needed, not both.
@@ -141,7 +98,6 @@ require("lazy").setup({
       },
     },
   },
-  -- { 'ggandor/leap.nvim' },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -188,27 +144,39 @@ require("lazy").setup({
       kulala_keymaps_prefix = "",
     },
   },
-  { "hrsh7th/vim-vsnip" },
-  { "hrsh7th/vim-vsnip-integ" },
+  -- { "hrsh7th/vim-vsnip" },
+  -- { "hrsh7th/vim-vsnip-integ" },
   -- Mason core
   {
     "williamboman/mason.nvim",
     build = ":MasonUpdate",
   },
-  
+
   -- Mason LSP integration
   {
     "williamboman/mason-lspconfig.nvim",
     dependencies = { "williamboman/mason.nvim" },
   },
-  
+
   -- Mason tool installer (for linters/formatters)
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     dependencies = { "williamboman/mason.nvim" },
   },
-
+  {
+    'milanglacier/minuet-ai.nvim',
+    config = function()
+      require('minuet').setup {
+        -- Your configuration options here
+      }
+    end,
+  },
 })
 
 require("default-settings")
 require("esp-idf-settings")
+
+vim.g.copilot_no_tab_map = true
+vim.keymap.set('i', '<Tab>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
+
+vim.keymap.set('n', '<leader>r', ':source $MYVIMRC<CR>', { desc = 'Recarregar configuração' })

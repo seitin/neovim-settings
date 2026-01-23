@@ -1,3 +1,5 @@
+#!/bin/bash
+
 npm i -g vscode-langservers-extracted
 
 brew install lua-language-server
