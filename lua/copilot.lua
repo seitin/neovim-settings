@@ -17,6 +17,9 @@ local function setup_keymaps()
     { "<leader>ct", "<cmd>CopilotChatTests<cr>",    desc = "CopilotChat - Generate tests" },
     { "<leader>cr", "<cmd>CopilotChatReview<cr>",   desc = "CopilotChat - Review code" },
     { "<leader>cm", "<cmd>CopilotChatCommit<cr>", desc = "CopilotChat - Commit code" },
+    { "<leader>cb", "<cmd>CopilotChat 'Write commit message for the change with commitizen convention. Keep the title under 50 characters and wrap message at 72 characters. Format as a gitcommit code block. Write it in PT-BR.'<cr>", desc = "CopilotChat - Commit code" },
+
+
   }
 
   for _, keymap in ipairs(keymaps) do
