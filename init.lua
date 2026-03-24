@@ -171,6 +171,7 @@ require("lazy").setup({
       }
     end,
   },
+  {'akinsho/git-conflict.nvim', version = "*", config = true}
 })
 
 require("default-settings")
@@ -181,3 +182,13 @@ vim.keymap.set('i', '<Tab>', 'copilot#Accept("\\<CR>")', { expr = true, replace_
 
 vim.keymap.set('n', '<leader>r', ':source $MYVIMRC<CR>', { desc = 'Recarregar configuração' })
 
+vim.api.nvim_create_autocmd('User', {
+  pattern = 'GitConflictDetected',
+  callback = function()
+    vim.notify('Conflict detected in '..vim.fn.expand('<afile>'))
+    vim.keymap.set('n', 'cww', function()
+      engage.conflict_buster()
+      create_buffer_local_mappings()
+    end)
+  end
+})
