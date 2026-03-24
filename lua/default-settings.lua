@@ -54,17 +54,17 @@ vim.api.nvim_create_autocmd("FileType", {
 
 vim.keymap.set("n", "<leader>r", ":so ~/.config/nvim/lua/default-settings.lua<CR>", { noremap = true, silent = true })
 
-require("rest-nvim").setup({
-  result_split_horizontal = false,
-  result_split_in_place = false,
-  skip_ssl_verification = false,
-  encode_url = true,
-  highlight = {
-    enabled = true,
-    timeout = 150,
-  },
-  env_file = '.env'
-})
+-- require("rest-nvim").setup({
+--   result_split_horizontal = false,
+--   result_split_in_place = false,
+--   skip_ssl_verification = false,
+--   encode_url = true,
+--   highlight = {
+--     enabled = true,
+--     timeout = 150,
+--   },
+--   env_file = '.env'
+-- })
 
 vim.keymap.set("n", "<space>r", ":Rest run<CR>", { noremap = true, silent = true })
 

@@ -1,5 +1,5 @@
 vim.lsp.enable({ 'lua_ls', 'vimls', 'sqlls', 'astro', 'dockerls', 'pyright', 'ts_ls', 'svelte', 'gopls', 'kulala_ls',
-  'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss' })
+  'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss', "qml", "qmljs" })
 
 vim.filetype.add({
   extension = {

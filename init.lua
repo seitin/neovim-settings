@@ -120,16 +120,16 @@ require("lazy").setup({
     ---@type render.md.UserConfig
     opts = {},
   },
-  {
-    "rest-nvim/rest.nvim",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      opts = function(_, opts)
-        opts.ensure_installed = opts.ensure_installed or {}
-        table.insert(opts.ensure_installed, "http")
-      end,
-    },
-  },
+  -- {
+  --   "rest-nvim/rest.nvim",
+  --   dependencies = {
+  --     "nvim-treesitter/nvim-treesitter",
+  --     opts = function(_, opts)
+  --       opts.ensure_installed = opts.ensure_installed or {}
+  --       table.insert(opts.ensure_installed, "http")
+  --     end,
+  --   },
+  -- },
   {
     "mistweaverco/kulala.nvim",
     keys = {
@@ -180,3 +180,4 @@ vim.g.copilot_no_tab_map = true
 vim.keymap.set('i', '<Tab>', 'copilot#Accept("\\<CR>")', { expr = true, replace_keycodes = false })
 
 vim.keymap.set('n', '<leader>r', ':source $MYVIMRC<CR>', { desc = 'Recarregar configuração' })
+

@@ -1,12 +1,11 @@
-local settings = require "fzf-lua"
-settings.setup { defaults = { git_icons = false } }
+local fzf = require "fzf-lua"
+fzf.setup { defaults = { git_icons = false } }
 
-vim.api.nvim_set_keymap("n", "<C-\\>", [[<Cmd>lua require"fzf-lua".buffers()<CR>]], {})
--- vim.api.nvim_set_keymap("n", "<C-i>", [[<Cmd>lua require"fzf-lua".builtin()<CR>]], {})
-vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua require"fzf-lua".files()<CR>]], {})
--- vim.api.nvim_set_keymap("n", "<C-l>", [[<Cmd>lua require"fzf-lua".live_grep_glob()<CR>]], {})
-vim.api.nvim_set_keymap("n", "<C-g>", [[<Cmd>lua require"fzf-lua".grep_project()<CR>]], {})
-vim.api.nvim_set_keymap("n", "<C-x><C-h>", [[<Cmd>lua require"fzf-lua".help_tags()<CR>]], {})
+local map = function(lhs, cmd)
+  vim.keymap.set("n", lhs, cmd, { silent = true })
+end
 
--- require("fzf-lua").utils.info(
-  -- "|<C-\\> buffers|<C-p> files|<C-g> grep|<C-l> live grep|<C-k> builtin|<F1> help|")
+map("<C-\\>", function() fzf.buffers() end)
+map("<C-p>", function() fzf.files() end)
+map("<C-g>", function() fzf.grep_project() end)
+map("<C-x><C-h>", function() fzf.help_tags() end)
