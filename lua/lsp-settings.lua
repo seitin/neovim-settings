@@ -8,6 +8,13 @@ vim.filetype.add({
   },
 })
 
+-- Enhance capabilities for nvim-cmp if available
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if ok_cmp and cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities then
+  capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
+
 -- Common root directory patterns
 local common_roots = {
   git = { '.git' },
@@ -119,6 +126,7 @@ for server_name, config in pairs(lsp_configs) do
     filetypes = config.filetypes,
     root_dir = vim.fs.root(0, config.root_dir),
     settings = config.settings,
+    capabilities = capabilities,
   })
 end
 

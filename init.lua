@@ -144,8 +144,16 @@ require("lazy").setup({
       kulala_keymaps_prefix = "",
     },
   },
-  -- { "hrsh7th/vim-vsnip" },
-  -- { "hrsh7th/vim-vsnip-integ" },
+  {
+    "hrsh7th/nvim-cmp",
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+      "L3MON4D3/LuaSnip",
+    },
+  },
   -- Mason core
   {
     "williamboman/mason.nvim",
@@ -175,6 +183,7 @@ require("lazy").setup({
 })
 
 require("default-settings")
+require("cmp-settings")
 require("esp-idf-settings")
 
 vim.g.copilot_no_tab_map = true
