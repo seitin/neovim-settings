@@ -1,5 +1,5 @@
 vim.lsp.enable({ 'lua_ls', 'vimls', 'sqlls', 'astro', 'dockerls', 'pyright', 'ts_ls', 'svelte', 'gopls', 'kulala_ls',
-  'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss', "qml", "qmljs" })
+  'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss' }) -- removed qml/qmljs to avoid missing-config warnings
 
 vim.filetype.add({
   extension = {
@@ -13,6 +13,26 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 local ok_cmp, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if ok_cmp and cmp_nvim_lsp and cmp_nvim_lsp.default_capabilities then
   capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
+end
+-- Ensure the client advertises support for resolving additionalTextEdits (used for auto-import)
+capabilities.textDocument = capabilities.textDocument or {}
+capabilities.textDocument.completion = capabilities.textDocument.completion or {}
+capabilities.textDocument.completion.completionItem = capabilities.textDocument.completion.completionItem or {}
+capabilities.textDocument.completion.completionItem.resolveSupport = capabilities.textDocument.completion.completionItem.resolveSupport or {}
+capabilities.textDocument.completion.completionItem.resolveSupport.properties = capabilities.textDocument.completion.completionItem.resolveSupport.properties or {}
+local props = capabilities.textDocument.completion.completionItem.resolveSupport.properties
+local needed = { "documentation", "detail", "additionalTextEdits" }
+for _, p in ipairs(needed) do
+  local found = false
+  for _, ex in ipairs(props) do
+    if ex == p then
+      found = true
+      break
+    end
+  end
+  if not found then
+    table.insert(props, p)
+  end
 end
 
 -- Common root directory patterns
@@ -48,7 +68,19 @@ local lsp_configs = {
     cmd = { 'pyright-langserver', '--stdio' },
     filetypes = { 'python' },
     root_dir = { 'pyproject.toml', 'setup.py', 'setup.cfg', 'requirements.txt', 'Pipfile', '.git' },
+    settings = {
+      python = {
+        pythonPath = "/usr/bin/python3",
+        analysis = {
+          autoImportCompletions = true,
+          useLibraryCodeForTypes = true,
+          indexing = true,
+          diagnosticMode = "workspace",
+        },
+      },
+    },
   },
+
   ts_ls = {
     cmd = { 'typescript-language-server', '--stdio' },
     filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
@@ -63,6 +95,12 @@ local lsp_configs = {
     cmd = { 'gopls' },
     filetypes = { 'go', 'gomod' },
     root_dir = { 'go.work', 'go.mod', '.git' },
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+      },
+    },
   },
   kulala_ls = {
     cmd = { 'kulala-ls', '--stdio' },
@@ -83,6 +121,16 @@ local lsp_configs = {
     cmd = { 'rust-analyzer' },
     filetypes = { 'rust' },
     root_dir = { 'Cargo.toml', 'rust-project.json', '.git' },
+    settings = {
+      ["rust-analyzer"] = {
+        completion = {
+          addCallArgumentSnippets = true,
+        },
+        assist = {
+          importMergeBehavior = "last",
+        },
+      },
+    },
   },
   lua_ls = {
     cmd = { 'lua-language-server' },
@@ -280,5 +328,4 @@ vim.keymap.set('i', '<CR>', function()
     return vim.api.nvim_replace_termcodes('<CR>', true, true, true)
   end
 end, { expr = true, replace_keycodes = false, desc = 'Accept completion or new line' })
-
 

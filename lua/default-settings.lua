@@ -74,8 +74,6 @@ require("nvimtree-settings")
 require("git-settings")
 require("lsp-settings")
 require("cursorline-settings")
-require("treesiter-settings")
-
 require("copilot")
 require("mason.settings")
 -- require("minuet-settings")

@@ -47,7 +47,14 @@ require("lazy").setup({
   { "nvim-tree/nvim-tree.lua" },
   { "nvim-tree/nvim-web-devicons" },
   { "jremmen/vim-ripgrep" },
-  { "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require("treesitter-settings")
+    end,
+  },
   { "tpope/vim-commentary" },
   { "yamatsum/nvim-cursorline" },
   -- { "lithammer/nvim-diagnosticls" },
@@ -118,7 +125,12 @@ require("lazy").setup({
     -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = {},
+    opts = {
+
+      latex = {
+        enabled = false,
+      }
+    },
   },
   -- {
   --   "rest-nvim/rest.nvim",
@@ -153,6 +165,9 @@ require("lazy").setup({
       "saadparwaiz1/cmp_luasnip",
       "L3MON4D3/LuaSnip",
     },
+    config = function()
+      pcall(require, "cmp-settings")
+    end,
   },
   -- Mason core
   {
@@ -179,11 +194,14 @@ require("lazy").setup({
       }
     end,
   },
-  {'akinsho/git-conflict.nvim', version = "*", config = true}
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
+  {
+    "stevearc/dressing.nvim",
+    event = "VeryLazy"
+  }
 })
 
 require("default-settings")
-require("cmp-settings")
 require("esp-idf-settings")
 
 vim.g.copilot_no_tab_map = true
