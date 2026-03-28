@@ -1,5 +1,5 @@
-vim.lsp.enable({ 'lua_ls', 'vimls', 'sqlls', 'astro', 'dockerls', 'pyright', 'ts_ls', 'svelte', 'gopls', 'kulala_ls',
-  'html', 'eslint', 'rust_analyzer', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss' }) -- removed qml/qmljs to avoid missing-config warnings
+vim.lsp.enable({ 'vimls', 'sqlls', 'dockerls', 'pyright', 'ts_ls', 'svelte',
+  'html', 'eslint', 'jsonls', 'bashls', 'diagnosticls', 'tailwindcss' }) -- removed qml/qmljs to avoid missing-config warnings
 
 vim.filetype.add({
   extension = {
@@ -54,11 +54,11 @@ local lsp_configs = {
     filetypes = { 'sql' },
     root_dir = common_roots.git,
   },
-  astro = {
-    cmd = { 'astro-ls', '--stdio' },
-    filetypes = { 'astro' },
-    root_dir = { 'package.json', 'tsconfig.json', 'astro.config.mjs', '.git' },
-  },
+  -- astro = {
+  --   cmd = { 'astro-ls', '--stdio' },
+  --   filetypes = { 'astro' },
+  --   root_dir = { 'package.json', 'tsconfig.json', 'astro.config.mjs', '.git' },
+  -- },
   dockerls = {
     cmd = { 'docker-langserver', '--stdio' },
     filetypes = { 'dockerfile' },
@@ -91,17 +91,17 @@ local lsp_configs = {
     filetypes = { 'svelte' },
     root_dir = { 'package.json', 'svelte.config.js', '.git' },
   },
-  gopls = {
-    cmd = { 'gopls' },
-    filetypes = { 'go', 'gomod' },
-    root_dir = { 'go.work', 'go.mod', '.git' },
-    settings = {
-      gopls = {
-        completeUnimported = true,
-        usePlaceholders = true,
-      },
-    },
-  },
+  -- gopls = {
+  --   cmd = { 'gopls' },
+  --   filetypes = { 'go', 'gomod' },
+  --   root_dir = { 'go.work', 'go.mod', '.git' },
+  --   settings = {
+  --     gopls = {
+  --       completeUnimported = true,
+  --       usePlaceholders = true,
+  --     },
+  --   },
+  -- },
   kulala_ls = {
     cmd = { 'kulala-ls', '--stdio' },
     filetypes = { 'http' },
