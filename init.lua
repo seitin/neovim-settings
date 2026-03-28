@@ -198,6 +198,28 @@ require("lazy").setup({
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy"
+  },
+  {
+    "rcarriga/nvim-notify",
+    event = "VeryLazy",
+    config = function()
+      require("notify-settings")
+    end,
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("which-key-settings")
+    end,
+  },
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    event = "BufRead",
+    config = function()
+      require("trouble-settings")
+    end,
   }
 })
 
