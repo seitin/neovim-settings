@@ -49,6 +49,7 @@ require("lazy").setup({
   { "jremmen/vim-ripgrep" },
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     lazy = false,
     build = ":TSUpdate",
     config = function()
