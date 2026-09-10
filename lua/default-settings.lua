@@ -1,3 +1,4 @@
+vim.g.nightflyTransparent = true
 vim.cmd([[ :colorscheme nightfly ]])
 vim.diagnostic.config({ virtual_text = true })
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP Go to Definition' })

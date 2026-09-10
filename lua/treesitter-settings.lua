@@ -1,7 +1,6 @@
 local treesitter = require("nvim-treesitter")
 
 local desired_parsers = {
-  "c",
   "lua",
   "vim",
   "vimdoc",
@@ -12,8 +11,7 @@ local desired_parsers = {
   "html",
   "http",
   "bash",
-  "astro",
-  "qmljs",
+  "python",
 }
 
 treesitter.setup()

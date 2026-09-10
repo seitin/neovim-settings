@@ -1,3 +1,7 @@
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+
+
 vim.pack.add({ { src = 'https://github.com/nvim-lua/plenary.nvim' } })
 vim.pack.add({ { src =
     "https://github.com/aserowy/tmux.nvim",
@@ -104,7 +108,4 @@ vim.pack.add({ { src =
 })
 vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
 
-
-
 require("default-settings")
-
