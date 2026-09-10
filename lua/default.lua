@@ -9,3 +9,8 @@ vim.keymap.set("n", "<C-l>", "<C-w>l", { noremap = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { noremap = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { noremap = true })
 
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    (vim.hl or vim.highlight).on_yank({ timeout = 250 })
+  end,
+})

@@ -14,5 +14,5 @@ require("supermaven-nvim").setup({
   disable_keymaps = false, -- disables built in keymaps for more manual control
   condition = function()
     return false
-  end -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+  end, -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
 })
