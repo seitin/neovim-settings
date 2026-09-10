@@ -1,6 +1,7 @@
 require('colorscheme')
 require("default")
 require("fzf")
+require('formatter')
 require('git')
 require('lsp')
 require("nvimtree")
@@ -8,3 +9,4 @@ require('statusline')
 -- require('supermaven')
 require('_tmux')
 require('treesitter')
+
