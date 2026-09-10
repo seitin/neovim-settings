@@ -1,7 +1,6 @@
--- vim.cmd([[ :colorscheme catppuccin-mocha ]])
--- vim.cmd([[ :colorscheme tokyonight-moon ]])
--- vim.cmd([[ :colorscheme dracula ]])
 vim.cmd([[ :colorscheme nightfly ]])
+vim.diagnostic.config({ virtual_text = true })
+vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = 'LSP Go to Definition' })
 -- Lua
 require('lualine').setup {
   options = {
@@ -33,15 +32,11 @@ vim.cmd([[ :set expandtab ]])
 vim.cmd([[ :set relativenumber ]])
 vim.cmd(
   [[ :set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*/node_modules/**/*.*,*/venv/**,**/.git/**,**/lib/**,**/bin/**,**/etc/**,**/lib64/**,_next/** ]])
--- vim.cmd([[ :set loaded_perl_provider=0 ]])
 
 vim.opt.scrolloff = 10
 vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
--- For Lua configuration (init.lua)
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 -- For Lua configuration (init.lua)
 vim.api.nvim_create_autocmd("FileType", {
@@ -52,28 +47,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
-vim.keymap.set("n", "<leader>r", ":so ~/.config/nvim/lua/default-settings.lua<CR>", { noremap = true, silent = true })
-
--- require("rest-nvim").setup({
---   result_split_horizontal = false,
---   result_split_in_place = false,
---   skip_ssl_verification = false,
---   encode_url = true,
---   highlight = {
---     enabled = true,
---     timeout = 150,
---   },
---   env_file = '.env'
--- })
-
-vim.keymap.set("n", "<space>r", ":Rest run<CR>", { noremap = true, silent = true })
-
 require("fzf-settings")
 
 require("nvimtree-settings")
-require("git-settings")
 require("lsp-settings")
 require("cursorline-settings")
-require("copilot")
-require("mason.settings")
--- require("minuet-settings")
