@@ -1,3 +1,6 @@
+vim.pack.add({ { src = "https://github.com/ibhagwan/fzf-lua" } })
+vim.pack.add({ { src = "https://github.com/jremmen/vim-ripgrep" } })
+
 local fzf = require "fzf-lua"
 fzf.setup { defaults = { git_icons = false } }
 
