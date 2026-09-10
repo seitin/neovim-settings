@@ -1,6 +1,6 @@
 vim.pack.add({ { src =
     "https://github.com/nvim-lualine/lualine.nvim",
-    dependencies = { "https://github.com/nvim-tree/nvim-web-devicons" }
+     "https://github.com/nvim-tree/nvim-web-devicons"
   }
 })
 
@@ -27,12 +27,13 @@ require('lualine').setup {
     lualine_a = {'mode'},
     lualine_b = {'branch', 'diff', 'diagnostics'},
     lualine_c = {
+      {'location'},
       {
         'filename',
         path = 1
       }
     },
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {'location'}
   },
@@ -40,7 +41,7 @@ require('lualine').setup {
     lualine_a = {},
     lualine_b = {},
     lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
