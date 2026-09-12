@@ -42,6 +42,17 @@ cmp.setup({
       },
     },
   },
+  -- Use the built-in preset or customize your keymaps
+  keymap = {
+    preset = "none", -- Disables defaults so you can set your exact preferences
+
+    ["<CR>"] = { "select_and_accept", "fallback" }, -- Enter accepts choice
+    ["<Tab>"] = { "select_next", "fallback" }, -- Tab goes down
+    ["<S-Tab>"] = { "select_prev", "fallback" }, -- Shift+Tab goes up
+    -- You can also keep traditional vim shortcuts active:
+    ["<C-n>"] = { "select_next", "fallback" },
+    ["<C-p>"] = { "select_prev", "fallback" },
+  },
 })
 
 vim.diagnostic.config({ virtual_text = true })
