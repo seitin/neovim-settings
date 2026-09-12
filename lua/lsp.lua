@@ -1,4 +1,10 @@
 vim.pack.add({ { src = "https://github.com/neovim/nvim-lspconfig" } })
+vim.pack.add({ { src = "https://github.com/mason-org/mason-lspconfig.nvim" } })
+vim.pack.add({ { src = "https://github.com/mason-org/mason.nvim" } })
+vim.pack.add({ 'https://github.com/saghen/blink.lib', 'https://github.com/saghen/blink.cmp' })
+local cmp = require('blink.cmp')
+cmp.build():pwait()
+cmp.setup()
 
 vim.diagnostic.config({ virtual_text = true })
 
@@ -6,10 +12,9 @@ vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go to Definition" })
 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show function signature description" })
 
-vim.o.autocomplete = true
 vim.o.pumheight = 15 -- Limits menu height so it doesn't run out of screen space
-vim.o.complete = ".,w,b,o"
-vim.o.completeopt = "menuone,noselect,noinsert,fuzzy,nosort"
+-- vim.o.complete = ".,w,b,o"
+-- vim.o.completeopt = "menuone,noselect,noinsert,fuzzy,nosort"
 
 vim.cmd([[ syntax enable ]])
 vim.cmd([[ set conceallevel=2 ]])
@@ -96,3 +101,4 @@ vim.api.nvim_create_autocmd("CompleteChanged", {
     end
   end,
 })
+
