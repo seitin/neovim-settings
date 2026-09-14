@@ -1,6 +1,7 @@
 -- Lua
 vim.g.mapleader = " "
-
+vim.opt.foldmethod = "syntax"
+vim.opt.foldlevel = 10
 vim.pack.add({ { src = "https://github.com/tpope/vim-commentary" } })
 
 vim.keymap.set("n", "<space>q", ":bd<CR>", { noremap = true })

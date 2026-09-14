@@ -57,7 +57,13 @@ require("lualine").setup({
   },
   winbar = {},
   tabline = {
-    lualine_a = { { "filename", path = 1 }, "diagnostics" },
+    lualine_a = {
+      {
+        "filename",
+        path = 1,
+      },
+      "diagnostics",
+    },
     lualine_b = {},
   },
   extensions = { "nvim-tree" },
