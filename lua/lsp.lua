@@ -57,7 +57,7 @@ cmp.setup({
 
 vim.diagnostic.config({ virtual_text = true })
 
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP Go to Definition" })
 vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, { desc = "Show function signature description" })
 
